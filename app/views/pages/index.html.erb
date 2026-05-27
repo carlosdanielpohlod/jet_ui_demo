@@ -6,7 +6,7 @@
       <%= jet_ui.card_header do %>
         <div class="flex items-center justify-between">
           <%= jet_ui.card_title post[:title] %>
-          <%= jet_ui.badge(post[:status], variant: post[:status] == "published" ? :default : :secondary) %>
+          <span class="ml-2"><%= jet_ui.badge(post[:status], variant: post[:status] == "published" ? :default : :secondary) %></span>
         </div>
       <% end %>
       <%= jet_ui.card_body do %>
