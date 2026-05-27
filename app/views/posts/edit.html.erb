@@ -1,0 +1,14 @@
+<% content_for :title, "Edit Post" %>
+
+<%= jet_ui.card do %>
+  <%= jet_ui.card_header do %>
+    <%= jet_ui.card_title "Edit Post" %>
+  <% end %>
+  <%= jet_ui.card_body do %>
+    <%= render "form", post: @post %>
+    <div class="flex gap-2 mt-4">
+      <%= jet_ui.btn(variant: :ghost) { link_to "View", @post } %>
+      <%= jet_ui.btn(variant: :ghost) { link_to "Back", posts_path } %>
+    </div>
+  <% end %>
+<% end %>

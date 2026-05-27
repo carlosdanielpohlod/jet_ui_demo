@@ -1,0 +1,35 @@
+<% content_for :title, "Posts" %>
+
+<div class="space-y-4">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold text-gray-900">Posts</h1>
+  </div>
+
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <%= jet_ui.card do %>
+        <%= jet_ui.card_header do %>
+          <div class="flex items-center justify-between">
+            <%= jet_ui.card_title post.title %>
+            <%= jet_ui.badge(post.status.presence || "draft", variant: post.status == "published" ? :default : :secondary) %>
+          </div>
+        <% end %>
+        <%= jet_ui.card_body do %>
+          <p class="text-gray-600 text-sm"><%= post.body %></p>
+          <div class="flex gap-2 mt-4">
+            <%= jet_ui.btn(variant: :outline, size: :sm) { link_to "View", post } %>
+            <%= jet_ui.btn(variant: :ghost, size: :sm) { link_to "Edit", edit_post_path(post) } %>
+            <%= button_to "Delete", post, method: :delete,
+                class: "text-sm text-red-500 hover:text-red-700 font-medium px-3 py-1.5",
+                data: { turbo_confirm: "Delete this post?" } %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= jet_ui.empty do %>
+      <p class="text-gray-500 mb-4">No posts yet.</p>
+      <%= jet_ui.btn(variant: :default) { link_to "Create your first post", new_post_path } %>
+    <% end %>
+  <% end %>
+</div>

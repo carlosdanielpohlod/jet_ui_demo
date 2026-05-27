@@ -1,0 +1,65 @@
+<h1 class="text-2xl font-bold text-gray-900 mb-6">Posts</h1>
+
+<div class="space-y-4 mb-10">
+  <% @posts.each do |post| %>
+    <%= jet_ui.card do %>
+      <%= jet_ui.card_header do %>
+        <div class="flex items-center justify-between">
+          <%= jet_ui.card_title post[:title] %>
+          <%= jet_ui.badge(post[:status], variant: post[:status] == "published" ? :default : :secondary) %>
+        </div>
+      <% end %>
+      <%= jet_ui.card_body do %>
+        <p class="text-gray-600 text-sm"><%= post[:body] %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= jet_ui.divider %>
+
+<div class="mt-8 space-y-4" data-controller="demo">
+
+  <%# Pre-rendered alerts, shown on button click via Stimulus %>
+  <div data-demo-target="success" hidden>
+    <%= jet_ui.alert { "Action completed successfully." } %>
+  </div>
+  <div data-demo-target="error" hidden>
+    <%= jet_ui.alert(variant: :destructive) { "Something went wrong. Please try again." } %>
+  </div>
+  <div data-demo-target="warning" hidden>
+    <%= jet_ui.alert(variant: :warning) { "Heads up — this action cannot be undone." } %>
+  </div>
+
+  <%# Buttons %>
+  <%= jet_ui.card do %>
+    <%= jet_ui.card_header do %>
+      <%= jet_ui.card_title "Buttons" %>
+    <% end %>
+    <%= jet_ui.card_body do %>
+      <div class="flex flex-wrap gap-3">
+        <%= jet_ui.btn(variant: :default,     data: { action: "demo#showSuccess" }) { "Success" } %>
+        <%= jet_ui.btn(variant: :destructive, data: { action: "demo#showError"   }) { "Error" } %>
+        <%= jet_ui.btn(variant: :outline,     data: { action: "demo#showWarning" }) { "Warning" } %>
+        <%= jet_ui.btn(variant: :ghost) { "Ghost" } %>
+        <%= jet_ui.btn(variant: :link) { "Link" } %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%# Badges %>
+  <%= jet_ui.card do %>
+    <%= jet_ui.card_header do %>
+      <%= jet_ui.card_title "Badges" %>
+    <% end %>
+    <%= jet_ui.card_body do %>
+      <div class="flex flex-wrap gap-2">
+        <%= jet_ui.badge "Default" %>
+        <%= jet_ui.badge "Secondary",   variant: :secondary %>
+        <%= jet_ui.badge "Outline",     variant: :outline %>
+        <%= jet_ui.badge "Destructive", variant: :destructive %>
+      </div>
+    <% end %>
+  <% end %>
+
+</div>
