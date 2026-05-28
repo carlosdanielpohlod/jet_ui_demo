@@ -5,8 +5,7 @@
 
 Rails 8 demo app showcasing [jet_ui](https://github.com/jetrockets/jet_ui) — a ViewComponent-based UI library with Tailwind CSS v4.
 
-## Running with Docker![Uploading Screenshot from 2026-05-27 21-31-06.png…]()
-
+## Running with Docker!
 
 ```bash
 docker build -t jet-ui-demo .
