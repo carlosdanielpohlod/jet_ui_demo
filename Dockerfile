@@ -18,7 +18,10 @@ RUN bundle install
 COPY . .
 
 RUN bundle exec rails db:migrate
-RUN bundle exec rails tailwindcss:build
+RUN bundle exec ruby -e \
+      "puts Gem::Specification.find_by_name('jet_ui').gem_dir + '/app/assets/stylesheets'" | \
+    xargs -I{} cp -r {} app/assets/tailwind/jet_ui_gem && \
+    bundle exec rails tailwindcss:build
 
 EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

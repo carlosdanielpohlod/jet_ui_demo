@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
   <head>
     <title><%= content_for(:title) || "JetUI Demo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,14 +7,23 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+      body { background-color: var(--color-background); color: var(--color-foreground); }
+    </style>
   </head>
 
-  <body class="bg-gray-50 min-h-screen">
-    <nav class="bg-white border-b border-gray-200 px-6 py-4">
-      <%= link_to "jet_ui demo", root_path, class: "font-semibold text-gray-900" %>
-    </nav>
+  <body class="min-h-screen">
+    <header style="border-bottom:1px solid var(--color-border);backdrop-filter:blur(12px);background:color-mix(in oklch,var(--color-background) 80%,transparent);position:sticky;top:0;z-index:50">
+      <div style="max-width:760px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between">
+        <%= link_to root_path, style: "display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--color-foreground)" do %>
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--color-success);display:inline-block"></span>
+          <span style="font-weight:600;font-size:14px">jet_ui demo</span>
+        <% end %>
+        <span style="font-size:11px;color:var(--color-muted-foreground);font-family:monospace">Rails 8 · ViewComponent · Tailwind v4</span>
+      </div>
+    </header>
 
-    <main class="max-w-4xl mx-auto px-6 py-8">
+    <main style="max-width:760px;margin:0 auto;padding:48px 24px">
       <%= jet_ui.flash(messages: flash) %>
       <%= yield %>
     </main>

@@ -1,3 +1,22 @@
 @import "tailwindcss";
+@import "./jet_ui_gem/jet_ui.css";
 
-@import "/usr/local/bundle/ruby/3.3.0/gems/jet_ui-0.2.6/app/assets/stylesheets/jet_ui.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.03em;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  margin-bottom: 12px;
+}

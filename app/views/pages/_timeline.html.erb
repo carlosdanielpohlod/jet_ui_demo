@@ -1,0 +1,33 @@
+<div style="flex-shrink:0;width:220px;position:sticky;top:80px">
+  <p class="section-label">Activity</p>
+  <%= jet_ui.timeline do %>
+    <%= jet_ui.timeline_item do %>
+      <%= jet_ui.timeline_dot variant: :success %>
+      <%= jet_ui.timeline_content do %>
+        <%= jet_ui.timeline_time "Just now" %>
+        <p>Article <strong>Getting started with jet_ui</strong> published.</p>
+      <% end %>
+    <% end %>
+    <%= jet_ui.timeline_item do %>
+      <%= jet_ui.timeline_dot variant: :info %>
+      <%= jet_ui.timeline_content do %>
+        <%= jet_ui.timeline_time "2 hours ago" %>
+        <p>Draft <strong>Tailwind CSS v4</strong> created.</p>
+      <% end %>
+    <% end %>
+    <%= jet_ui.timeline_item do %>
+      <%= jet_ui.timeline_dot variant: :warning %>
+      <%= jet_ui.timeline_content do %>
+        <%= jet_ui.timeline_time "Yesterday" %>
+        <p>Article <strong>Why ViewComponent?</strong> sent for review.</p>
+      <% end %>
+    <% end %>
+    <%= jet_ui.timeline_item do %>
+      <%= jet_ui.timeline_dot variant: :error %>
+      <%= jet_ui.timeline_content do %>
+        <%= jet_ui.timeline_time "3 days ago" %>
+        <p>Deploy failed — rolled back to previous version.</p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
